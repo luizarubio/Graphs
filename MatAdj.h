@@ -8,7 +8,21 @@ struct node{
 	int valor;
 } Node;
 
-void InintMat(int (*mat[150][150]), int node);
+/*struct dependencia{
+	int numero_tarefa;
+	dependencia *prox_dependencia;
+} Dependencia;*/
+
+struct tarefa{
+	int quantidade_dependencias;
+	int status; 						// 0: item não finalizado 1: item finalizado
+	int dependencias[MAX];
+	//Dependencia *lista_dependências;
+} Tarefa;
+
+
+void InitMat(struct Tarefa *tarefas, int qtdTarefas);
 void Remove (int (*mat[150][150]), int v1, int v2);
 void Connect(int (*mat[150][150]), int v1, int v2);
 void Print (int (*mat[150][150]), int node);
+int Check_Cycle(int visitados[], struct Tarefa *tarefas, int atual);

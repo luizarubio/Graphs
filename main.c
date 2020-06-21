@@ -1,16 +1,22 @@
 #include "MatAdj.h"
 
 int main(){
-    int mat[MAX][MAX];
+
+    Tarefa tarefas[MAX];
     int i,k,j,node,qtdDepend,q,op;
     int v1, v2;
-    int qtdNodes=0;
-    scanf(" %d",&qtdnode);
+    int qtdTarefas=0;
+
+// Parâmetros iniciais
+
+    scanf(" %d",&qtdTarefas);
     scanf(" %d",&qtdDepend);
 
+    InintMat(&tarefas,qtdTarefas);
 
+/*
 //conecta o grafos com todas as dependencias que forem apresentadas
-	 for(k=0; k<qtdnode; k++){
+	 for(k=0; k < qtdDepend; k++){
 		scanf("%d %d", &v1, &v2);
 	    Connect(&mat, v1, v2);
 	}
@@ -34,5 +40,6 @@ Print(&mat, node);
 		}
 		
 	}
+*/
 return 0;
 }
