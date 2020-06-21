@@ -23,6 +23,7 @@ typedef struct tarefa{
 
 void InitMat(Tarefa tarefas[], int qtdTarefas);
 void Remove (int (*mat[150][150]), int v1, int v2);
-void Connect(int (*mat[150][150]), int v1, int v2);
-void Print (int (*mat[150][150]), int node);
+void Connect(Tarefa tarefas[], int pai, int filho);
+void Print (Tarefa tarefas[], int qtdTarefas);
+void InitVisitados(int visitados[]);
 int Check_Cycle(int visitados[],Tarefa tarefas[], int atual);

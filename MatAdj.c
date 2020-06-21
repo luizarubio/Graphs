@@ -15,24 +15,36 @@ void Remove (int (*mat[100][100]), int v1, int v2){
     mat[v1][v2]=0;
 }
 */
-void Connect(Tarefa tarefas[], int v1, int v2){
-    mat[v1][v2]=1;
+
+
+
+void Connect(Tarefa tarefas[], int pai, int filho){
+    tarefas[filho].quantidade_dependencias++;
+    tarefas[filho].dependencias[(tarefas[filho].quantidade_dependencias) - 1] = pai;
 }
 
-/*
-void Print (int (*mat[100][100]), int node){
-    int i,j;
-    for (i = 0; i < node; i++) {
-        for (j = 0; j < node; j++) {
-            printf("%d ", mat[i][j]);
+void InitVisitados(int visitados[]){
+	for (int i = 0; i < MAX; ++i)
+	{
+		visitados[i] = -1;
+	}
+}
+
+
+void Print (Tarefa tarefas[], int qtdTarefas){
+    int i, j;
+    for (i = 0; i < qtdTarefas; i++) {
+    	printf("Tarefa %d tem %d pendencias\n",i, tarefas[i].quantidade_dependencias);
+//		tarefas[i].status;
+        for (j = 0; j < tarefas[i].quantidade_dependencias; j++) {
+            printf("%d\n",tarefas[i].dependencias[j]);
         }
-        printf("\n");
     }
 }
-*/
 
+//[-1,-1,-1,...,-1]
 int Check_Cycle(int visitados[], Tarefa tarefas[], int atual){
-
+	int i = 0;
 	if(visitados[atual] == 1)
 	{
 		return 1;				// Detectado Ciclo
@@ -42,9 +54,9 @@ int Check_Cycle(int visitados[], Tarefa tarefas[], int atual){
 
 	// Verifica todas s dependências da tarefa atual
 	//
-	for (int i = 0; i < tarefas[atual].quantidade_dependencias; ++i)
+	for (i = 0; i < tarefas[atual].quantidade_dependencias; ++i)
 	{
-		if (Check_Cycle(visitados, &tarefas, tarefas[atual].dependencias[i]))
+		if (Check_Cycle(visitados, tarefas, tarefas[atual].dependencias[i]))
 		{
 			return 1;				// Detectado Ciclo de uma dependência da tarefa atual
 		}
