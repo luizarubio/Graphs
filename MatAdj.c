@@ -1,6 +1,6 @@
 #include "MatAdj.h"
 
-void InitMat(struct Tarefa *tarefas, int qtdTarefas){
+void InitMat(Tarefa tarefas[], int qtdTarefas){
     int i, j;
     for (i = 0; i < qtdTarefas; i++) {
         tarefas[i].quantidade_dependencias = 0;
@@ -14,11 +14,12 @@ void InitMat(struct Tarefa *tarefas, int qtdTarefas){
 void Remove (int (*mat[100][100]), int v1, int v2){
     mat[v1][v2]=0;
 }
-
-void Connect(int (*mat[100][100]), int v1, int v2){
+*/
+void Connect(Tarefa tarefas[], int v1, int v2){
     mat[v1][v2]=1;
 }
 
+/*
 void Print (int (*mat[100][100]), int node){
     int i,j;
     for (i = 0; i < node; i++) {
@@ -29,7 +30,8 @@ void Print (int (*mat[100][100]), int node){
     }
 }
 */
-int Check_Cycle(int visitados[], struct Tarefa *tarefas, int atual){
+
+int Check_Cycle(int visitados[], Tarefa tarefas[], int atual){
 
 	if(visitados[atual] == 1)
 	{
@@ -42,7 +44,7 @@ int Check_Cycle(int visitados[], struct Tarefa *tarefas, int atual){
 	//
 	for (int i = 0; i < tarefas[atual].quantidade_dependencias; ++i)
 	{
-		if (Check_Cycle(visitados, tarefas, tarefas[atual].dependencias[i]))
+		if (Check_Cycle(visitados, &tarefas, tarefas[atual].dependencias[i]))
 		{
 			return 1;				// Detectado Ciclo de uma dependência da tarefa atual
 		}

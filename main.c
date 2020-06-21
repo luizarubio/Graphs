@@ -12,14 +12,14 @@ int main(){
     scanf(" %d",&qtdTarefas);
     scanf(" %d",&qtdDepend);
 
-    InintMat(&tarefas,qtdTarefas);
+    InitMat(&tarefas,qtdTarefas);
 
-/*
 //conecta o grafos com todas as dependencias que forem apresentadas
 	 for(k=0; k < qtdDepend; k++){
 		scanf("%d %d", &v1, &v2);
-	    Connect(&mat, v1, v2);
+	    Connect(&tarefas, v1, v2);
 	}
+/*
 //checa se existem ciclos
 Print(&mat, node);
 //calcula quanto tempo para executar todas as tarefas

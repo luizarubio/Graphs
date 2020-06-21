@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #define MAX 150
 
-struct node{
+/*struct node{
 	int pais[200];
 	int qtdPais;
 	int valor;
-} Node;
+} Node;*/
 
 /*struct dependencia{
 	int numero_tarefa;
 	dependencia *prox_dependencia;
 } Dependencia;*/
 
-struct tarefa{
+typedef struct tarefa{
 	int quantidade_dependencias;
 	int status; 						// 0: item não finalizado 1: item finalizado
 	int dependencias[MAX];
@@ -21,8 +21,8 @@ struct tarefa{
 } Tarefa;
 
 
-void InitMat(struct Tarefa *tarefas, int qtdTarefas);
+void InitMat(Tarefa tarefas[], int qtdTarefas);
 void Remove (int (*mat[150][150]), int v1, int v2);
 void Connect(int (*mat[150][150]), int v1, int v2);
 void Print (int (*mat[150][150]), int node);
-int Check_Cycle(int visitados[], struct Tarefa *tarefas, int atual);
+int Check_Cycle(int visitados[],Tarefa tarefas[], int atual);
